@@ -12,7 +12,7 @@ import {
   IconButton,
   Collapse,
   Stack,
-  Icon
+  Icon,
 } from '@chakra-ui/react'
 import { BG_COLOR, HERO_BG_COLOR, NAVIGATION, Navigation } from '../constants'
 import { ChevronDownIcon, CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
@@ -23,7 +23,7 @@ export const Nav = () => {
   const isDark = colorMode === 'dark'
 
   return (
-    <Box as='nav' width={'100%'}>
+    <Box as="nav" width={'100%'}>
       <Flex
         bg={BG_COLOR[colorMode]}
         color={useColorModeValue('gray.600', 'white')}
@@ -46,7 +46,10 @@ export const Nav = () => {
         >
           <Link href="https://stateful.com" isExternal>
             <Image
-              src={useColorModeValue('/assets/logo.png', '/assets/logo_white.png')}
+              src={useColorModeValue(
+                '/assets/logo.png',
+                '/assets/logo_white.png'
+              )}
               padding={'10px'}
               width={'200px'}
               alt="Stateful"
@@ -55,39 +58,44 @@ export const Nav = () => {
           <Flex ml={'auto'} display={{ base: 'flex', sm: 'none' }}>
             <IconButton
               onClick={onToggle}
-              icon={ isOpen ? <CloseIcon w={15} h={15} /> : <HamburgerIcon w={30} h={30} /> }
+              icon={
+                isOpen ? (
+                  <CloseIcon w={15} h={15} />
+                ) : (
+                  <HamburgerIcon w={30} h={30} />
+                )
+              }
               variant={'outline'}
               aria-label={'Toggle Navigation'}
-              size="large" />
+              size="large"
+            />
           </Flex>
           <Flex align={'center'} justify={{ base: 'right' }} ml={10}>
             <Box display={{ base: 'none', sm: 'flex' }}>
-              {Object.entries(NAVIGATION).map(([title, { href }], i) => (
-                href.startsWith('http')
-                  ? <Button
+              {Object.entries(NAVIGATION).map(([title, { href }], i) =>
+                href.startsWith('http') ? (
+                  <Button
                     key={i}
                     as="a"
                     href={href}
                     bg={BG_COLOR[colorMode]}
                     ml={2}
                     target={'_blank'}
-                    rel='noopener noreferrer'
+                    rel="noopener noreferrer"
                   >
                     {title}
                   </Button>
-                  : <NextLink key={i} href={href} passHref>
-                    <Button
-                      as="a"
-                      bg={BG_COLOR[colorMode]}
-                      ml={2}
-                    >
+                ) : (
+                  <NextLink key={i} href={href} passHref>
+                    <Button as="a" bg={BG_COLOR[colorMode]} ml={2}>
                       {title}
                     </Button>
                   </NextLink>
-              ))}
+                )
+              )}
             </Box>
-            <Flex ml={{ base: -5, sm: 2}}>
-              <Button
+            <Flex ml={{ base: -5, sm: 2 }}>
+              {/* <Button
                 as="a"
                 px={{ base: 10 }}
                 mx={{ base: 4, md: 0 }}
@@ -103,12 +111,12 @@ export const Nav = () => {
                 display={{ base: 'none', sm: 'flex' }}
               >
                 Install
-              </Button>
+              </Button> */}
             </Flex>
             <Flex>
               <Switch
-                size='lg'
-                colorScheme='whiteAlpha'
+                size="lg"
+                colorScheme="whiteAlpha"
                 isChecked={isDark}
                 onChange={toggleColorMode}
               />
@@ -134,10 +142,7 @@ interface NavItem {
 const MobileNav = () => {
   const { colorMode } = useColorMode()
   return (
-    <Stack
-      bg={HERO_BG_COLOR[colorMode]}
-      p={4}
-      display={{ md: 'none' }}>
+    <Stack bg={HERO_BG_COLOR[colorMode]} p={4} display={{ md: 'none' }}>
       {Object.entries(NAVIGATION).map(([label, { href, children }], i) => (
         <MobileNavItem key={i} label={label} href={href} children={children} />
       ))}
@@ -161,8 +166,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         color={useColorModeValue('gray.600', 'gray.200')}
         _hover={{
           textDecoration: 'none',
-          color: 'marquee'
-        }}>
+          color: 'marquee',
+        }}
+      >
         {label}
         {children && (
           <Icon
@@ -186,10 +192,15 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         >
           {children &&
             Object.entries(children).map(([label, { href }], i) => (
-              <Link key={i} py={2} href={href} _hover={{
-                textDecoration: 'none',
-                color: 'marquee'
-              }}>
+              <Link
+                key={i}
+                py={2}
+                href={href}
+                _hover={{
+                  textDecoration: 'none',
+                  color: 'marquee',
+                }}
+              >
                 {label}
               </Link>
             ))}

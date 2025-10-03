@@ -1,16 +1,28 @@
 import Script from 'next/script'
-import { Flex, FlexProps, Text, Link, Image, useColorModeValue, Icon, Box } from '@chakra-ui/react'
+import {
+  Flex,
+  FlexProps,
+  Text,
+  Link,
+  Image,
+  useColorModeValue,
+  Icon,
+  Box,
+} from '@chakra-ui/react'
 import { SiGithub, SiDiscord } from 'react-icons/si'
 
 import { GOOGLE_ANALYTICS_ID, IS_PROD } from '../constants'
 
-const socialLinks = [{
-  href: 'https://discord.gg/BQm8zRCBUY',
-  icon: SiDiscord
-}, {
-  href: 'https://github.com/stateful/vscode-marquee',
-  icon: SiGithub
-}]
+const socialLinks = [
+  {
+    href: 'https://discord.gg/BQm8zRCBUY',
+    icon: SiDiscord,
+  },
+  {
+    href: 'https://github.com/stateful/vscode-marquee',
+    icon: SiGithub,
+  },
+]
 
 export const Footer = (props: FlexProps) => {
   return (
@@ -41,12 +53,17 @@ export const Footer = (props: FlexProps) => {
             </Link>
           ))}
         </Box>
-        <Text mb={2} color={'gray.500'}>&copy; 2022 Stateful, Inc. All rights reserved.</Text>
-        <Link href='https://stateful.com' isExternal>
+        <Text mb={2} color={'gray.500'}>
+          &copy; 2020-2025 Stateful, Inc. All rights reserved.
+        </Text>
+        <Link href="https://stateful.com" isExternal>
           <Image
             w={100}
             filter={'grayscale(100%)'}
-            src={useColorModeValue('/assets/logo.png', '/assets/logo_white.png')}
+            src={useColorModeValue(
+              '/assets/logo.png',
+              '/assets/logo_white.png'
+            )}
             padding={'10px'}
             width={'200px'}
             alt="Stateful"
@@ -55,7 +72,10 @@ export const Footer = (props: FlexProps) => {
       </Flex>
       {IS_PROD && (
         <>
-          <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`} />
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
+          />
           <Script>
             {`
               window.dataLayer = window.dataLayer || [];
