@@ -16,7 +16,7 @@
     "react-markdown": "^8.0.2",
     "react-splitter-layout": "^4.0.0",
     "react-virtualized": "^9.22.3",
-    "uuid": "^8.3.2"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@types/react-copy-to-clipboard": "^5.0.2"
